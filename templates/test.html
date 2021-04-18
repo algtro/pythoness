@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Тестирование экстрасенсов</title>
+</head>
+<body>
+
+<div style="text-align: center; font-family: sans-serif">
+
+    <h1>Тестирование экстрасенсов</h1>
+
+    {% for pythoness in pythonesses %}
+
+        <p>
+            <b>Экстрасенс №{{ pythoness.index + 1 }}</b><br/>
+            <i style="font-size: small ">Уровень достоверности: {{ pythoness.confidence_level }}<br/>
+                Вариант ответа: {{ pythoness.guess }}<br/>
+                {% if pythoness.history %}
+                    История ответов: {{ pythoness.history }}
+                {% endif %}</i>
+        </p>
+
+    {% endfor %}
+
+    <form action="{{ url_for('index') }}" method="post">
+        <p>
+            <label>
+                Введите загаданное число
+                <input type="number" name="answer"
+                       min="{{ guess_min }}" max="{{ guess_max }}"
+                       required>
+            </label>
+        </p>
+        <p>
+            <button name="startBtn" type="submit">Продолжить</button>
+        </p>
+    </form>
+
+    {% if user_history %}
+        <p>История загаданных чисел: {{ user_history }}</p>
+    {% endif %}
+
+</div>
+
+</body>
+</html>

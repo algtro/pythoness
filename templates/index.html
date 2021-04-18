@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Тестирование экстрасенсов - Приветствие</title>
+</head>
+<body>
+
+<div style="text-align: center; font-family: sans-serif">
+
+    <h1>Тестирование экстрасенсов</h1>
+
+    <p>Здравствуйте! Загадайте пожалуйста двузначное число.</p>
+
+    <form action="/test/" method="post">
+        <button name="startBtn" type="submit">Готово</button>
+    </form><br/>
+
+    {% if user_history %}
+        <p>История загаданных чисел: {{ user_history }}</p>
+    {% endif %}
+
+</div>
+
+</body>
+</html>
